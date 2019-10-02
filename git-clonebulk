@@ -1,0 +1,8 @@
+#!/bin/bash
+grep -v '^#' < .projects.gws | { while IFS="|" read -r name repo; do
+    if [ ! -z "$repo" ]; then
+	echo "git clone $repo" 
+	git clone $repo $name
+    fi
+done 
+}
