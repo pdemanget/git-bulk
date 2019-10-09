@@ -3,7 +3,8 @@ grep -v '^#' < .projects.gws | { while IFS="|" read -r name repo; do
 #	echo "cd $name && $*" 
     if [ ! -z "$name" ]; then
 	cd $name
-	echo  "$name ;"
+#	echo -n "$name ;"
+	printf "%-30s ; " $name
 	$*
 	cd ..
     fi

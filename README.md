@@ -25,8 +25,14 @@ examples
     # fetch all projects
     git bulk fetch
 
-    # merge all projects 
-    git bulk merge origin/master --ff
+    # merge all fetched project without conflict
+    git bulk merge --ff
+
+    # merge all master 
+    git bulk fetch origin master:master
+
+    # works with alias 
+    git bulk youralias
 
     # count lines of all projects (requires cloc)
     bulk cloc >> projects.cloc

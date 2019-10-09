@@ -1,11 +1,14 @@
 #!/bin/bash
 pwd
 #grep -v '^#|^$' < .projects.gws | { while IFS="|" read -r name repo; do
+YELLOW="\033[01;33m"
+NC="\033[0m"
 grep -v '^#' < .projects.gws | { while IFS="|" read -r name repo; do
 #	echo "cd $name && $*" 
   if [ ! -z "$name" ]; then
 	cd $name
-	echo  "$name ;"
+#	echo  "$name ;"
+	printf "${YELLOW}%-30s ;$NC " $name
 	git $*
 	cd ..
   fi
