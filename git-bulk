@@ -9,7 +9,12 @@ grep -v '^#' < .projects.gws | { while IFS="|" read -r name repo; do
 	cd $name
 #	echo  "$name ;"
 	printf "${YELLOW}%-30s ;$NC " $name
-	git $*
+	result=$(git $*)
+	if [ -z "$result" ]; then
+		echo
+	else
+		echo $result
+	fi
 	cd ..
   fi
 done 

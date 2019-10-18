@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -i
+#export COLOR=ANSI_CODE
 grep -v '^#' < .projects.gws | { while IFS="|" read -r name repo; do
 #	echo "cd $name && $*" 
     if [ ! -z "$name" ]; then
