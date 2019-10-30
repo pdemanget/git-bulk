@@ -1,0 +1,20 @@
+#!/bin/bash
+# provides the "dirty" git functionq
+
+# Installation:
+# echo ". /opt/lib/bulk/bulk-bashrc" >> ~/.bashrc
+
+
+function dirty(){
+	if [[ $(git status --porcelain)  ]];
+		then 
+			if [[ $(git status --porcelain |grep "^[A-Z ][A-Z ].*$") ]];
+			then
+				echo -e "${RED}dirty$NC"
+			else
+				echo -e "${YELLOW}changes$NC"
+			fi
+		else 
+			echo -e "${GREEN}ok$NC" 
+	fi
+}
