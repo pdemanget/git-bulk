@@ -10,8 +10,11 @@ Usage
 =====
 Command list: 
  - bulk: shell command for every projects 
- - git clonebulk: clone all projects of .project.gws
- - git bulk: git command on every projects 
+ - git bulk command: git command on every projects 
+
+special commands:
+ - git bulk clone: clone all the project of the gws (no check, will fail if exists)
+ - git bulk update: update the list according to the folders, if not already in the file. maintain a sorted file.
 
 Use it at your project root.
 

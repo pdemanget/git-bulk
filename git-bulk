@@ -1,8 +1,19 @@
 #!/bin/bash
-pwd
+#pwd
 #grep -v '^#|^$' < .projects.gws | { while IFS="|" read -r name repo; do
 YELLOW="\033[01;33m"
 NC="\033[0m"
+
+# other commands
+COMMAND="git-bulk-$1"
+if  command -v $COMMAND &> /dev/null
+then
+    shift
+    eval $COMMAND $*
+    exit
+fi
+
+
 grep -v '^#' < .projects.gws | { while IFS="|" read -r name repo; do
 #	echo "cd $name && $*" 
   if [ ! -z "$name" ]; then

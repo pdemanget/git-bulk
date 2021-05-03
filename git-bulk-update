@@ -1,0 +1,14 @@
+#!/bin/bash
+# todo loo & check if contains
+# git --git-dir=htoh-api/.git remote -v
+
+for d in */; do
+    if ! grep -q "${d%/} |" .projects.gws
+    then
+		echo "${d%/} | $(git --git-dir=$d/.git config --get remote.origin.url)" >>.projects.gws
+		sort -o .projects.gws .projects.gws
+    fi
+done
+
+
+
