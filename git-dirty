@@ -1,0 +1,22 @@
+#!/bin/bash
+
+COLOR_RED="\033[0;31m"
+COLOR_YELLOW="\033[0;33m"
+COLOR_GREEN="\033[0;32m"
+COLOR_OCHRE="\033[38;5;95m"
+COLOR_BLUE="\033[0;34m"
+COLOR_WHITE="\033[0;37m"
+COLOR_RESET="\033[0m"
+
+
+	if [[ $(git status --porcelain)  ]];
+		then 
+			if [[ $(git status --porcelain |grep "^[A-Z ][A-Z ].*$") ]];
+			then
+				echo -e "${COLOR_RED}dirty$NC"
+			else
+				echo -e "${COLOR_YELLOW}changes$NC"
+			fi
+		else 
+			echo -e "${COLOR_GREEN}ok$NC" 
+	fi

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+cat << EOF
+usage: git bulk [git command| git bulk command]
+This project reuse the configuration file from streakyCobra gws.
+
+
+A ".projects.gws" file should be present in the parent of your git-root directories.
+
+The file format is as follow:
+	projectName | git@gitrepo:projectName.git
+	projectName2 | git@gitrepo:projectName2.git
+The your directory should be like that:
+git-root-parent/
+  .projects.gws
+  projectName/
+	.git/
+  projectName1/
+    .git/
+
+Examples with standard git commands
+------------------------------------
+git bulk fetch : fetch all directories
+git bulk merge --ff : merge remote branch if possible
+
+
+Specific commands:
+------------------
+git bulk clone: clone every project of .projects , if possible
+git bulk init: intialize the configuration file
+git bulk update: modify .projects with all directories
+git bulk help: ... display this help
+
+### "bulk" command: execute sh command in all directories:
+
+$ bulk mvn install
+
+### additionnal command
+git find-big-files -sz 1kb -sl  find all files > 1kb
+can be combined with a bulk:
+git bulk find-big-files -sz 1kb -sl  find all files > 1kb
+
+EOF
